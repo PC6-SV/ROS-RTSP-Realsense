@@ -1,0 +1,10 @@
+# Set up your streams to rtsp here.
+port: "8554"
+streams:
+  # Example ROS Image topic stream
+  stream:
+    type: topic  # topic - Image is sourced from a sensor_msgs::Image topic
+    source: /camera/color/image_raw  # The ROS topic to subscribe to
+    mountpoint: /d435i      # Choose the mountpoint for the rtsp stream. This will be able to be accessed from rtsp://<server_ip>/back
+    caps: video/x-raw,framerate=10/1,width=640,height=480  # Set the caps to be applied after getting the ROS Image and before the x265 encoder.
+    bitrate: 500
